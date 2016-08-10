@@ -39,9 +39,27 @@ and open the template in the editor.
 				<h2>List of games</h2>
 				<ul class="list" id="all-games">
 				</ul>
+                                <P> There are games in the list waiting for your to join!! </P>
 			</section>
 		</article>
-
+                <nav>
+			<h1>Join Team</h1>
+			<button id="backBtn" type="button">Back</button>
+		</nav>
+		<article id="players">
+			<section>
+			 <h1>Join Game</h1>
+                          <ul class="list" id="one-play">
+                  
+                          </ul>
+                        
+                         <form method="post" action="api/player" id="joinform">
+                          Name:<input type="text" name="pname"/><br/>
+                         <input type="submit" value="Create">
+                         </form>
+                            
+			</section>
+		</article>
 		
     </body>
 </html>
