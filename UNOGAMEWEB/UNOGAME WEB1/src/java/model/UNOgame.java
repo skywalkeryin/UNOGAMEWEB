@@ -41,7 +41,7 @@ public class UNOgame {
         return discardPile;
     }
 
-    public List<Players> getPlayers() {
+    public ArrayList<Players> getPlayers() {
         return players;
     }
 
@@ -88,8 +88,7 @@ public class UNOgame {
     public void  createNewgame(){
         deck.createDeck();
        // LinkedList<UNOCard>card=
-       UNOCard c=deck.getCardlist().getFirst();
-        deck.getCardlist().removeFirst();
+       UNOCard c=deck.takeCard();
          discardPile.addFirst(c);
         
         

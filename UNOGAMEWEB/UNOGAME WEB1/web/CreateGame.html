@@ -9,14 +9,36 @@ and open the template in the editor.
         <title>Create Game</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="libs/chui/chui-ios-3.9.2.css"/>
+         <script src="libs/jquery-3.1.0.js"></script>
+         <script src="libs/chui/chui-3.9.2.js"></script>
+         <script src="forgame.js"></script>
     </head>
     <body>
-      <h1>New Game</h1>
+        <nav>
+            <h1>New Game</h1>
+        </nav>
+       <article id="creategame">
+          <section>
       <form method="post" action="api/game/create">
        Title:<input type="text" name="title"/><br/>
-      <input type="submit" value="Create">
-
-
-    </form>
+      <input type="submit" value="Create" id="create"/>
+        </form>
+          </section>
+       </article>
+         <nav>
+            <button id="backBtn" type="button">Back</button> 
+            <h1>Ready to Start</h1>    
+        </nav>
+        <article id="startgame">
+            <section>
+                
+                <table id="start">                  
+                </table>
+                   <form method="post" action="api/game/start">   
+                   <input type="submit" value="Start Game" id="jump"/>      
+                   </form>
+            </section>
+        </article>
     </body>
 </html>

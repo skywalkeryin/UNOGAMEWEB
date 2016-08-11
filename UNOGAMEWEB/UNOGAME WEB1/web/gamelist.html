@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <title>Game List</title>
@@ -26,7 +21,7 @@ and open the template in the editor.
 
 		
 
-		<script src="index.js"></script>
+		<script src="gamelist.js"></script>
 
     </head>
     <body>
@@ -41,7 +36,7 @@ and open the template in the editor.
 				</ul>
                                 <P> There are games in the list waiting for your to join!! </P>
 			</section>
-		</article>
+		</article> 
                 <nav>
 			<h1>Join Team</h1>
 			<button id="backBtn" type="button">Back</button>
@@ -53,9 +48,12 @@ and open the template in the editor.
                   
                           </ul>
                         
-                         <form method="post" action="api/player" id="joinform">
-                          Name:<input type="text" name="pname"/><br/>
-                         <input type="submit" value="Create">
+                         <form method="post" action="api/player/join" id="joinform">
+                          Game Name:<input type="text" name="gname" id="gname" value="" readonly /><br/>
+                          Game ID:<input type="text" name="gid" id="gid" value="" readonly /><br/>
+                          Player Name:<input type="text" name="pname"/><br/>
+                          
+                         <input type="submit" value="Join Game" id="jumptowait">
                          </form>
                             
 			</section>

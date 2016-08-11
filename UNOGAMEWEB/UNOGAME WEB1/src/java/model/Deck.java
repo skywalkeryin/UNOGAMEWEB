@@ -35,7 +35,7 @@ public class Deck {
              c.setCardColor(c.Color[a]);//2 represent red
              c.setCardType(c.Type[0]);//O represents numbers
              c.setCardValue(c.Value[j]);
-             c.setCardImg(c.Color[a]+" "+j+" png");
+             c.setCardImg(c.Color[a]+c.Type[0]+j+".png");
              cardlist.add(c);
             }
              
@@ -51,7 +51,7 @@ public class Deck {
                       c.setCardColor(c.Color[j]);
                       c.setCardType(c.Type[b+1]);
                       c.setCardValue(20);
-                      c.setCardImg(c.Color[j]+c.Type[b+1]+" png");
+                      c.setCardImg(c.Color[j]+c.Type[b+1]+20+".png");
                      cardlist.add(c);
                   }
               }
@@ -62,7 +62,7 @@ public class Deck {
              c.setCardColor(c.Color[i]);
              c.setCardType(c.Type[0]);
              c.setCardValue(0);
-             c.setCardImg(c.Color[i]+" "+0+" png");
+             c.setCardImg(c.Color[i]+c.Type[0]+0+".png");
              cardlist.add(c);
              
           }
@@ -73,7 +73,7 @@ public class Deck {
                   c.setCardColor(c.Color[4]); // 4 reprents nocolor
                   c.setCardType(c.Type[4+i]);
                   c.setCardValue(50);
-                  c.setCardImg(c.Type[4+i]+" png");
+                  c.setCardImg(c.Color[4]+c.Type[4+i]+50+".png");
                   cardlist.add(c);
               }
               
@@ -85,7 +85,7 @@ public class Deck {
     }
     public UNOCard takeCard(){
         Random rand =new Random();
-        int n=rand.nextInt(cardlist.size()); // generate a random number between 0 and 107
+        int n=rand.nextInt(cardlist.size()-1); // generate a random number between 0 and 107
         UNOCard c=cardlist.get(n);
         cardlist.remove(n);
         return c;

@@ -1,45 +1,72 @@
 
 package business;
 
+
+import static com.sun.org.apache.xml.internal.security.keys.keyresolver.KeyResolver.iterator;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import model.UNOgame;
 import javax.ejb.Stateless;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
+import java.util.LinkedHashMap;
 import java.util.UUID;
 import javax.json.JsonObject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import model.Players;
+
+
+
 
 
 
 @Stateless
 public class GameManager {
     
-   // @PersistenceContext private EntityManager em;
-    private ArrayList<UNOgame> globalgame=new ArrayList<UNOgame>();
-       
+     
+      private LinkedHashMap<String,UNOgame> globalgame=new LinkedHashMap<String,UNOgame>();
+      private ArrayList<UNOgame> globalgamelist=new ArrayList<UNOgame>();
+      private  ArrayList<Players> globalplayers=new  ArrayList<Players>();
       
     
-    public ArrayList<UNOgame> creategame( String name){
+    public  LinkedHashMap<String,UNOgame> creategame( String name){
           String gid = UUID.randomUUID().toString().substring(0, 8);
           UNOgame game=new UNOgame();
           game.setGameID(gid);
           game.setGameName(name);
           game.setGameStatus("wating");
-          //em.persist(game);
-          globalgame.add(game);
-          return globalgame;
-        // return game;
+       
+        globalgame.put(gid, game);
+        return globalgame;
     }
-    public ArrayList<UNOgame> getallgames(){
-         return globalgame;
+
+    public  LinkedHashMap<String,UNOgame> getallgames(){
+
+          return globalgame;
         
     }
+    public UNOgame getlastgame(){
+         String lKeyLast = null;
+    if (!globalgame.isEmpty()){
+      
+      for(String key : globalgame.keySet()){
+        lKeyLast = key;
+      }
+     
+      }// 用于开始游戏，找到最后一个创建的游戏。
+     return ( globalgame.get(lKeyLast));
+    }
+       
+
+    public  void addplayers(String gid,ArrayList<Players> players){
+        UNOgame a=new UNOgame();
+        a=globalgame.get(gid);
+        a.setPlayers(players);
+        globalgame.put(gid, a );
+     
+   }
+    public ArrayList<Players>  getplayerlist(String gid){
+         return  (globalgame.get(gid).getPlayers());
+        }
           
        
         

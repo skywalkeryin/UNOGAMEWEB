@@ -2,20 +2,29 @@ package model;
 
 
 
+import java.math.BigDecimal;
 import java.util.LinkedList;
 import java.util.Random;
+import javax.json.Json;
+import javax.json.JsonObject;
 
 
 public class Players {
     private String pid;
     private String name;
-    LinkedList<UNOCard>hands=new LinkedList<UNOCard>();
-    Deck deck=new Deck();
+    LinkedList<UNOCard>hands;
+    Deck deck;
     
     public Players(){
-        super();
+       hands =new LinkedList<UNOCard>();
+       deck =new Deck();
     }
-    
+    public Players( String pid,String name,LinkedList<UNOCard> hands,Deck deck){
+        this.pid=pid;
+        this.name=name;
+        this.hands=hands;
+        this.deck=deck;
+    }
     public String getName() {
         return name;
     }
@@ -62,6 +71,15 @@ public class Players {
         return hands;
     }
     
-        
+     public JsonObject toJson() {
+	   JsonObject player =Json.createObjectBuilder()
+                                .add("pid", pid)
+				.add("name", name)
+				//.add("gameName", gameName)
+				//.add("gameStatus",gameStatus)
+                                .build();
+           return player;
+				
+	}
     
 }

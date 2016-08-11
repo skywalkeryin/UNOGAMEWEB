@@ -1,5 +1,8 @@
 package model;
 
+import javax.json.Json;
+import javax.json.JsonObject;
+
 
 public class UNOCard {
     protected String cardColor;
@@ -45,4 +48,13 @@ public class UNOCard {
 		public void setCardImg(String cardImg) {
 			this.cardImg = cardImg;
 		} 
+                public JsonObject toJson() {
+	   JsonObject card=Json.createObjectBuilder()
+				.add("cardColor", cardColor)
+				.add("cardType", cardType)
+				.add("cardValue",cardValue)
+                                .add("cardImg", cardImg)
+                                .build();
+           return card;
+}
 }
