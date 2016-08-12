@@ -33,11 +33,19 @@ and open the template in the editor.
         <article id="startgame">
             <section>
                 
-                <table id="start">                  
-                </table>
-                   <form method="post" action="api/game/start">   
+            
+                
+                   <form method="post" action="api/game/start">  
+                        
+                          Game Name:<input type="text" name="gname" id="gname" value="" readonly /><br/>
+                          Game ID:<input type="text" name="gid" id="gid" value="" readonly /><br/>
+                        
+                          
+                      
+               
                    <input type="submit" value="Start Game" id="jump"/>      
                    </form>
+                  Player Name:<input type="text" name="pname"/><br/>
             </section>
         </article>
     </body>

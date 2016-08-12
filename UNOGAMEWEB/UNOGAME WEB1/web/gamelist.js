@@ -19,14 +19,14 @@ $(function() {
         
 	//Event delegation
 	$("#all-games").on("singletap", "li", function() {
-		       var gid =$(this).find("h4").text();
+		      var gid =$(this).find("h4").text();
                       var gname=$(this).find("h3").text();
                       var h1=$("<h3>").text(gname);
                       var h2=$("<h4>").text(gid);
                      //  var txtbox = document.createElement('input'); 
-                      //   txtbox.type = "text"; 
-                    // var li=$("<li>").append(h1)
-                           //  .append(h2);
+                     //   txtbox.type = "text"; 
+                     // var li=$("<li>").append(h1)
+                     //  .append(h2);
                      $("#gid").empty();
                      $("#gname").empty();
                      $("#gname")[0].value=h1.text();

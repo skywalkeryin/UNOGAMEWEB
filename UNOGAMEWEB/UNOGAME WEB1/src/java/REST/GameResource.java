@@ -30,6 +30,9 @@ import model.UNOgame;
 public class GameResource {
     
       @EJB private GameManager GameMgr;
+      private  static String gid=null;
+      
+      
       @GET
       //@Path("{gid}/games")
       @Produces(MediaType.APPLICATION_JSON)
@@ -46,7 +49,7 @@ public class GameResource {
       
     
     @GET
-    @Path("/start")
+    @Path("/start1")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getgame(){
           JsonObject game= GameMgr.getlastgame().toJson();
@@ -61,6 +64,9 @@ public class GameResource {
       JsonObject card= GameMgr.getlastgame().getDiscardPile().getFirst().toJson();
           return (Response.ok(card).build());
     }
+    
+    
+    
       
     @POST
     @Path("/create")
@@ -76,9 +82,34 @@ public class GameResource {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     @Produces(MediaType.APPLICATION_JSON)
     public Response startgame(MultivaluedMap<String,String> form){
+        gid=form.getFirst("gid");
+        
         GameMgr.getlastgame().createNewgame();
+        UNOgame game=  GameMgr.getallgames().get(gid);
+        for(int i=0;i<game.getPlayers().size();i++){
+          
+           game.deal(game.getPlayers().get(i));
+            
+           
+        
+        }
         try{
          URI location =new java.net.URI("http://localhost:8080/UNOGAME_WEB1/StartGame.html");
+         return Response.seeOther(location).build();
+        }
+        catch(URISyntaxException ex){
+            return Response.status(404).entity("fail to find").build();
+        }
+    }
+    @POST
+    @Path("/playerstart")
+    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response palyerstartgame(MultivaluedMap<String,String> form){
+          
+        
+        try{
+         URI location =new java.net.URI("http://localhost:8080/UNOGAME_WEB1/ReceiveCard.html");
          return Response.seeOther(location).build();
         }
         catch(URISyntaxException ex){
