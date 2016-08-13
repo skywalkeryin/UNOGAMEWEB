@@ -6,16 +6,51 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>WaitGame</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <link rel="stylesheet" href="libs/chui/chui-ios-3.9.2.css"/>
+
+		<script src="libs/handlebars-v4.0.5.js"></script>
+		<script src="libs/jquery-3.1.0.js"></script>
+		<script src="libs/chui/chui-3.9.2.js"></script>
+
+         
         <script src="waitgame.js"></script>
     </head>
     <body>
-        <div><h1>Waiting for UNO to start</h1></div>
-                <form method="post" action="api/game/playerstart">   
-                     
-                <input type="submit" value="Start">      
-                </form> 
+            <nav>
+			<h1>Waiting for UNO to start</h1>
+			<button type="button" id="reloadBtn">Reload</button>
+	    </nav>
+        <article id="main">
+			<section>
+				<h1>Player</h1>
+				<ul class="list" id="playerslist">
+                                </ul>
+                          PlayerName:<input type="text" name="pname1" id="pname1" value="" readonly /><br/>
+                          PlayerID:<input type="text" name="pid1" id="pid1" value="" readonly /><br/>
+				
+                           <input type="submit" value="Start" id="start"/>
+                                
+			</section>
+        </article> 
+        <nav>
+			<h1>Join Team</h1>
+			<button id="backBtn" type="button">Back</button>
+        </nav>
+		<article id="players">
+			<section>
+		         <div> 
+                            PlayerID:<input type="text" name="pid" id="pid" value="" readonly /><br/>
+                            PlayerName:<input type="text" name="pname" id="pname" value="" readonly />
+                         </div>
+                        <div id="imagetr"> 
+                         
+                        </div> 
+                            
+			</section>
+		</article>
+      
     </body>
 </html>

@@ -1,4 +1,4 @@
-  $(function () {
+   $(function () {
       
        var promise = $.getJSON("api/game/start");
         promise.done(function(result) {
@@ -15,20 +15,22 @@
        var promise = $.getJSON("api/game/startgame");
         promise.done(function(result){
             var image=$('<img src="Images/'+result.cardImg+'">');
+            var image1=$('<img src="Images/back.png">');
 //            var image=$("<h4>").text("asd");
-            $("#imagetr").empty().append(image);
+            $("#imagetr").empty().append(image).append(image1);
         });
-       var promiseplayers=$.getJSON("api/player/playerlistingame");
-     
+      
+      var promiseplayers=$.getJSON("api/player/playerlistingame");   
        promiseplayers.done( function(players){
            for(i=0;i<players.length;i++){
-               var name=$("<td>").text(players.name);
-               var tr=$("<tr>").append(name);
-               $("#players").append(tr);
+               var player=players[i];
+               
+               var name=$("<li>").text(player.name);
+               
+               $("#players").append(name);
            }
            
        });
        
   });
-
 

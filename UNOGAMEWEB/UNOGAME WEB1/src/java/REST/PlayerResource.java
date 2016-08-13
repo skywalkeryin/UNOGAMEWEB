@@ -5,6 +5,7 @@ import business.GameManager;
 import business.PlayersManager;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Optional;
 import java.util.Set;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -99,26 +100,33 @@ public class PlayerResource {
     }
    
       @GET
-      @Path("/playerhands/{playerid}")
+      @Path("{pid}")
       @Produces(MediaType.APPLICATION_JSON)    
-      public Response getownhands (@PathParam("playerid") String pid){
+      public Response getownhands (@PathParam("pid") String pid){
          JsonArrayBuilder arrBuilder = Json.createArrayBuilder();
-      
-        int a=0;
-         for(int i=0;i<GameMgr.getallgames().get(gid).getPlayers().size();i++){
+         Players p=new Players();
+         int a=0;
+         for(int i=0;i<10;i++){
             if( GameMgr.getallgames().get(gid).getPlayers().get(i).getPid()==pid){
-             a=i;
+                a=i;
+                
              break;
             }
-                
             
-         }
-         Players p=GameMgr.getallgames().get(gid).getPlayers().get(a); //找到一个玩家
-         p.getHands().stream().map(h -> {
+          }
+         // GameMgr.getallgames().get(gid).getPlayers().get(a);
+            p=GameMgr.getallgames().get(gid).getPlayers().get(a);
+           
+           
+                  p.getHands().stream().map(h -> {
 						return (h.toJson());
 					}).forEach(j -> {
 						arrBuilder.add(j);
 					});
+        
+         
+          //找到一个玩家
+       
           return (Response.ok(arrBuilder.build()).build());
      }
 
