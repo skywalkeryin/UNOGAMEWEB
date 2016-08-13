@@ -18,7 +18,7 @@ $(function(){
    
      $("#start").on("singletap", function () {  
                 var fixedpid=$("#pid1").value;
-                var card=$.getJSON("api/player/playerhands/"+"92e700a9");
+                var card=$.getJSON("api/player/playerhands/"+fixedpid);
                 card.done(function(result){
                 for(var i=0;i<result.length;i++){
                 var x=result[i];

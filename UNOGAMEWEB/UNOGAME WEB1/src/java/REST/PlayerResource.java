@@ -99,36 +99,36 @@ public class PlayerResource {
           return (Response.ok(game).build());
     }
    
-      @GET
-      @Path("{pid}")
-      @Produces(MediaType.APPLICATION_JSON)    
-      public Response getownhands (@PathParam("pid") String pid){
-         JsonArrayBuilder arrBuilder = Json.createArrayBuilder();
-         Players p=new Players();
-         int a=0;
-         for(int i=0;i<10;i++){
-            if( GameMgr.getallgames().get(gid).getPlayers().get(i).getPid()==pid){
-                a=i;
-                
-             break;
-            }
-            
-          }
-         // GameMgr.getallgames().get(gid).getPlayers().get(a);
-            p=GameMgr.getallgames().get(gid).getPlayers().get(a);
-           
-           
-                  p.getHands().stream().map(h -> {
-						return (h.toJson());
-					}).forEach(j -> {
-						arrBuilder.add(j);
-					});
-        
-         
-          //找到一个玩家
-       
-          return (Response.ok(arrBuilder.build()).build());
-     }
+//      @GET
+//      @Path("{pid}")
+//      @Produces(MediaType.APPLICATION_JSON)    
+//      public Response getownhands (@PathParam("pid") String pid){
+//         JsonArrayBuilder arrBuilder = Json.createArrayBuilder();
+//         Players p=new Players();
+//         int a=0;
+//         for(int i=0;i<10;i++){
+//            if( GameMgr.getallgames().get(gid).getPlayers().get(i).getPid()==pid){
+//                a=i;
+//                
+//             break;
+//            }
+//            
+//          }
+//         // GameMgr.getallgames().get(gid).getPlayers().get(a);
+//            p=GameMgr.getallgames().get(gid).getPlayers().get(a);
+//           
+//           
+//                  p.getHands().stream().map(h -> {
+//						return (h.toJson());
+//					}).forEach(j -> {
+//						arrBuilder.add(j);
+//					});
+//        
+//         
+//          //找到一个玩家
+//       
+//          return (Response.ok(arrBuilder.build()).build());
+//     }
 
             
     @POST
@@ -148,5 +148,21 @@ public class PlayerResource {
             return Response.status(404).entity("fail to find").build();
         }
            
-      }
+   }
+    
+     private  static int a=-1;
+      @GET
+      @Path("/playerhands/{playerid}")
+      @Produces(MediaType.APPLICATION_JSON)    
+      public Response getownhands (@PathParam("playerid") String pname){
+         JsonArrayBuilder arrBuilder = Json.createArrayBuilder();
+         a++;
+         Players p=GameMgr.getallgames().get(gid).getPlayers().get(a); //找到一个玩家
+         p.getHands().stream().map(h -> {
+						return (h.toJson());
+					}).forEach(j -> {
+						arrBuilder.add(j);
+					});
+          return (Response.ok(arrBuilder.build()).build());
+     }
 }
