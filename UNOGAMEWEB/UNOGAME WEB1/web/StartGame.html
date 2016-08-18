@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+
 <html>
     <head>
         <title>Start Game</title>
@@ -11,16 +6,29 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="libs/jquery-3.1.0.js"></script>
         <script src="libs/chui/chui-3.9.2.js"></script>
-        <script src="startgame.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+     
+       <script src="startgame.js"></script>
+      <link type="text/css" rel="stylesheet" href="CSS/startgame.css"/>
     </head>
     <body>
-          <table id="title">          
+        <table id="title">          
         </table>       
+        <button id="connectBtn">connect</button>
             <p>Players</p>
             <ul id="players">
                 
             </ul>      
-        <div id="imagetr">
+        <div id="imagetr" class="dragpile">
         </div>
+          
+        
+        <p> Discard Pile</p>
+        <div id="testsendimg">
+                    
+        </div>
+        <br>  
+         <p> The Deck</p>
     </body>
 </html>

@@ -1,0 +1,17 @@
+.dragdeck{
+    cursor: pointer;
+    display: block;
+
+    z-index: 100;
+    position: absolute; /*newly added*/
+    
+}
+#testsendimg{
+    border:3px solid #b8dcff;
+}
+.players{
+    border:3px solid #b8dcff;
+    width: 220px;
+    height: 220px;
+    
+}

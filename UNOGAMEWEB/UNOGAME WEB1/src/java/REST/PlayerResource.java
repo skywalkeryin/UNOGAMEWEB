@@ -24,7 +24,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import model.UNOgame;
-import model.Players;
+import model.Players;   
 
 @RequestScoped
 @Path("/player")

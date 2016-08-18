@@ -65,6 +65,19 @@ public class GameResource {
           return (Response.ok(card).build());
     }
     
+    @GET
+    @Path("/deck")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getfulldeck(){
+       JsonArrayBuilder arrBuilder = Json.createArrayBuilder();
+        GameMgr.getallgames().get(gid).getDeck().getCardlist()
+                              .stream().map(c -> {
+						return (c.toJson());
+					}).forEach(j -> {
+						arrBuilder.add(j);
+					});
+        return Response.ok(arrBuilder.build()).build();
+    }
     
     
       
